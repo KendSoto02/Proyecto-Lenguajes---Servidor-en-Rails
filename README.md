@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este README contiene los pasos necesarios para poder levantar la aplicación.
 
-Things you may want to cover:
+Todos los comandos se deben de correr en la consola dentro del directorio del proyecto
 
-* Ruby version
+* Ruby version: 2.7.0 (para colocar esta versión por defecto en sus computadora corra `rvm use default 2.7.0`)
 
-* System dependencies
+* Instalar todas las gemas: `bundle install`
 
-* Configuration
+* Crear la base de datos: `rake db:create`
 
-* Database creation
+* Correr las migraciones: `rake db:migrate`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Levantar el servidor: `rails server`
