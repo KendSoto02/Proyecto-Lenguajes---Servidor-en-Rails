@@ -1,0 +1,4 @@
+$('#modalProductos').modal('toggle');
+$('#tablaProductos').append(
+    '<tr id="producto_<%= @dish.id %>" ><td><%= image_tag(@dish.picture.url, size: "50x50", class: "rounded-circle") if @dish.imagen? %></td><td><%= @dish.name %></td><td><%= @dish.description %></td><<td>$ <%= @dish.price %></td><td><%= link_to 'editar', edit_dish_path(@dish), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @dish, remote: true, method: :delete, data: { confirm: "¿Borrar producto: #{@dish.name}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);
