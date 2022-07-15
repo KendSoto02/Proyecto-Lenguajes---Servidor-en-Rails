@@ -16,5 +16,7 @@ module AppComercial
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.assets.initialize_on_precompile = false
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{yml}')]
+    I18n.default_locale = :es
   end
 end

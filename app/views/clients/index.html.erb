@@ -16,6 +16,7 @@
             <th>Nombre</th>
             <th>Dirección</th>
             <th>Email</th>
+            <th>Estado de la cuenta</th>
             <th>Acciones</th>
         </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td><%= clie.name %></td>
                 <td><%= clie.direction %></td>
                 <td><%= clie.email %></td>
+                <td><%= t("activerecord.attributes.client.statusClients.#{clie.statusClient}") %></td>
                 <td>
                 <%= link_to "editar", edit_client_path(clie), html_options = {class: "btn btn-info btn-xs", remote: true} %>
                 <%= link_to "Borrar", clie, remote: true, method: :delete, data: { confirm: "¿Borrar cliente: #{clie.name}?"}, class: "btn btn-danger btn-xs" %>

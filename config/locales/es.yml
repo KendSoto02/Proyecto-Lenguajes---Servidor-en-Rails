@@ -1,0 +1,28 @@
+es:
+  application:
+    CRUDSdisposable: CRUDS Disponibles
+    list_of: Lista de %{model}
+    new: Nuevo %{model}
+    show: Mostrar 
+    back: Volver 
+    edit: Editar 
+    delete: Eliminar 
+    save: Guardar
+    saved: El hospital fue creado con éxito.
+    updated: El hospital se actualizó con éxito.
+    destroyed: El hospital fue eliminado con éxito.
+    confirm: Desea eliminarlo
+    accept: OK
+    reject: Cancelar
+  activerecord:
+    modules:
+      hospital:
+        one: Hospital
+        other: Hospitales
+    attributes:
+      hospital:
+        name: Nombre
+      client:
+        statusClients:
+          active: Habilitada
+          inactive: Inhabilitada

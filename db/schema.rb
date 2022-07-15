@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_07_13_084318) do
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "direction"
+    t.integer "statusClient"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
