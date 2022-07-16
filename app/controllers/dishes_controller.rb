@@ -1,59 +1,65 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[ show edit update destroy ]
 
-  # GET /dishes or /dishes.json
   def index
     @dishes = Dish.all
   end
 
-  # GET /dishes/1 or /dishes/1.json
-  def show
+  def show 
   end
 
-  # GET /dishes/new
   def new
     @dish = Dish.new
   end
 
-  # GET /dishes/1/edit
   def edit
   end
 
-  # POST /dishes or /dishes.json
   def create
     @dish = Dish.new(dish_params)
-
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to dish_url(@dish), notice: "Dish was successfully created." }
-        format.json { render :show, status: :created, location: @dish }
+        format.json {head :no_content}
+        format.js
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @dish.errors, status: :unprocessable_entity }
+        debugger
+        format.json { render json: @dish.errors.full_messages, status: :unprocessable_entity }
+        format.js { render :new }
       end
     end
   end
 
-  # PATCH/PUT /dishes/1 or /dishes/1.json
   def update
     respond_to do |format|
       if @dish.update(dish_params)
-        format.html { redirect_to dish_url(@dish), notice: "Dish was successfully updated." }
-        format.json { render :show, status: :ok, location: @dish }
+        format.json { head :no_content }
+        format.js
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @dish.errors, status: :unprocessable_entity }
+        format.json { render json: @dish.errors.full_messages, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end
 
-  # DELETE /dishes/1 or /dishes/1.json
   def destroy
     @dish.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+      format.js
+    end
+  end
+
+  def buscador
+    @resultados = Dish.buscador(params[:termino]).map do |dish|
+      {
+        id: dish.id,
+        name_dish: dish.name,
+        existence: dish.existence
+      }
+    end
 
     respond_to do |format|
-      format.html { redirect_to dishes_url, notice: "Dish was successfully destroyed." }
-      format.json { head :no_content }
+      format.json { render :json => @resultados }
     end
   end
 
@@ -65,6 +71,6 @@ class DishesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dish_params
-      params.require(:dish).permit(:name, :description, :price, :picture)
+      params.require(:dish).permit(:name, :description, :existence, :price, :picture)
     end
 end
