@@ -5,7 +5,7 @@
   </div>
 
   <div class="item form-group<%= @dish.errors[:picture].any? ? ' has-error has-feedback' : '' %>">
-    <%= image_tag(@dish.picture.url, size: "150x150") if @dish.picture? %>
+    <%= image_tag(@dish.picture.url) if @dish.picture? %>
     <div class="input-group">
       <%= f.file_field :picture, {:class=> "form-control" } %>        
       <%if @dish.errors[:picture].any? %>

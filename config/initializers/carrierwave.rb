@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
     config.fog_credentials = {
         provider:                         'Google',
-        google_storage_access_key_id:     'GOOGIS6SSEOALKH4HAGR3NCF',
-        google_storage_secret_access_key: 'jBcti0WikiVdwfls7Ba8LUFVTDDP/bW2RxoX7gUW'    
+        google_storage_access_key_id:     'GOOG4VHVGU32QTOLKN7IIJRI',
+        google_storage_secret_access_key: 'trEcKPBd7zI7usazoKNoX3FlOOuvblK/jysVy8s9'    
     }
-    config.fog_directory = 'bucket-libro-rails-2'
+    config.fog_directory = 'bucket-libro-rails1'
 end
