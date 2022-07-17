@@ -1,0 +1,4 @@
+$('#modalDishes').modal('toggle');
+$('#dish_<%= @dish.id %>').replaceWith(
+    '<tr id="dish_<%= @dish.id %>" ><td><%= image_tag(@dish.picture.url, size: "50x50", class: "rounded-circle") if @dish.picture? %></td><td><%= @dish.name %></td><td><%= @dish.existence %></td><<td>$ <%= @dish.price %></td><td><%= link_to 'editar', edit_dish_path(@dish), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @dish, remote: true, method: :delete, data: { confirm: "¿Borrar plato: #{@dish.name}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);
