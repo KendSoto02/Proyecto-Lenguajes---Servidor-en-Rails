@@ -17,27 +17,21 @@
   </head>
   <body id="page-top">
     <div id="wrapper">
-      <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <!-- Sidebar - Brand -->
         <%= link_to root_path, class: "sidebar-brand d-flex align-items-center justify-content-center"  do %>
           <div class="sidebar-brand-text mx-3"> Sistema administrativo </div>
         <%end%>
 
-        <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
-
-        <!-- Divider -->
         <hr class="sidebar-divider">
 
         <div class="sidebar-heading">
           Módulos
         </div>
 
-        <li class="nav-item">
+        <li class="nav-item">------
           <%= link_to categories_path, class: "nav-link"  do %>
             <i class="fas fa-fw fa-tags"></i>
             <span>Categorías</span>
@@ -51,7 +45,7 @@
           <%end%>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item">/////
           <%= link_to clients_path, class: "nav-link"  do %>
             <i class="fas fa-fw fa-users"></i>
             <span>Clientes</span></a>
@@ -65,7 +59,7 @@
         <%end%>
       </li>
 
-        <li class="nav-item">
+        <li class="nav-item">----
           <%= link_to suppliers_path, class: "nav-link"  do %>
             <i class="fas fa-fw fa-truck"></i>
             <span>Proveedores</span>
@@ -79,7 +73,7 @@
           <%end%>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item">----
           <%= link_to warehouses_path, class: "nav-link"  do %>
             <i class="fas fa-fw fa-pallet"></i>
             <span>Almacén</span>
@@ -87,18 +81,14 @@
         </li>
 
       </ul>
-      <!-- End of Sidebar -->
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-          <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-            <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
 
-            <!-- Topbar Search -->
             <%= form_tag( '/search', options = { class: "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" }) do %>
               <div class="input-group">
                 <%= text_field_tag("termino", value = nil, options = { class: "form-control bg-light border-0 small", placeholder: "Search for..."}) %>
@@ -110,15 +100,12 @@
               </div>
             <% end %>
 
-            <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
-              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
               <li class="nav-item dropdown no-arrow d-sm-none">
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-search fa-fw"></i>
                 </a>
-                <!-- Dropdown - Messages -->
                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                   <form class="form-inline mr-auto w-100 navbar-search">
                     <div class="input-group">
@@ -135,13 +122,11 @@
 
               <div class="topbar-divider d-none d-sm-block"></div>
 
-              <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.profile.nombre %></span>
                   <img class="img-profile rounded-circle" src="<%=current_user.profile.foto.url %>">
                 </a>
-                <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <%= link_to profile_path(current_user.profile), html_options: { class: "dropdown-item"}  do %>
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -158,7 +143,6 @@
             </ul>
 
           </nav>
-          <!-- End of Topbar -->
           <div class="container-fluid">
             <%= yield %>
           </div>
