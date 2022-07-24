@@ -26,3 +26,8 @@ es:
         statusClients:
           active: Habilitada
           inactive: Inhabilitada
+      profile:
+        rolUsers:
+          admin: Administrador
+          kitchenUsers: Usuario de Cocina
+          client: Cliente

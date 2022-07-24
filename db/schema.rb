@@ -62,16 +62,20 @@ ActiveRecord::Schema.define(version: 2022_07_13_084318) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "foto"
-    t.string "nombre"
-    t.string "apellido"
-    t.string "direccion"
-    t.string "ciudad"
-    t.string "estado"
-    t.string "zip"
+    t.string "name"
+    t.string "direction"
+    t.integer "statusClient"
+    t.integer "rolUser"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.index ["email"], name: "index_profiles_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

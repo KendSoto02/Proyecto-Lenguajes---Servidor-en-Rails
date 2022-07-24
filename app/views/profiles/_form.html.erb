@@ -1,0 +1,63 @@
+<%= form_for @profile, { remote: true, multiple: true }  do |f| %>
+
+    <div class="form-group">
+      <h4 class="control-label">Datos del profile:</h4>
+    </div>
+
+    <div class="item form-group<%= @profile.errors[:name].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :name, "Nombre del profile: " %>
+      <div class="input-group">
+        <%= f.text_field :name, {:class=> "form-control", :placeholder=>"Introduzca el nombre del cliente..."} %>        
+        <%if @profile.errors[:name].any? %>
+          <p class="bg-danger"><%= @profile.errors[:name].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-grouprofile.errors[:direction].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :direction, "Dirección del profile: " %>
+      <div class="input-group">
+        <%= f.text_area :direction, {class: "form-control", :placeholder=>"Introduzca la dirección del cliente..."} %>
+        <%if @profile.errors[:direction].any? %>
+          <p class="bg-danger"><%= @profile.errors[:direction].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group<%= @profile.errors[:email].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :email, "Email del profile: " %>
+      <div class="input-group">
+        <%= f.text_field :email, {:class=> "form-control", :placeholder=>"Introduzca el email del cliente.."} %>        
+        <%if @profile.errors[:email].any? %>
+          <p class="bg-danger"><%= @profile.errors[:email].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group<%= @profile.errors[:statusClient].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :statusClient, "Estado cuenta: " %>
+      <div class="input-group">
+        <%= f.select(:statusClient, options_for_select(statusClients, @profile.statusClient), {prompt: "Seleccione"}, class: 'form-control' )%>        
+        <%if @profile.errors[:statusClient].any? %>
+          <p class="bg-danger"><%= @profile.errors[:statusClient].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group<%= @profile.errors[:rolUser].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :rolUser, "Usuario tipo: " %>
+      <div class="input-group">
+        <%= f.select(:rolUser, options_for_select(rolUsers, @profile.rolUser), {prompt: "Seleccione"}, class: 'form-control' )%>        
+        <%if @profile.errors[:rolUser].any? %>
+          <p class="bg-danger"><%= @profile.errors[:rolUser].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    
+
+
+    <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+      <%= f.submit @profile.new_record? ? "Crear Usuario" : "Actualizar Usuarios", :class => "btn btn-success"%>
+    </div>  
+  <% end %>

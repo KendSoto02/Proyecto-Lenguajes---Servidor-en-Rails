@@ -1,0 +1,43 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Clientes</h1>
+<!-- DataTales Example -->
+<div>  
+  <%= link_to new_profile_path, {remote: true, class: "btn btn-info", id: "anadir-cliente-btn"}  do %>
+    <span class="fas fa-plus-square" style=""></span>
+  <% end %>
+</div>
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablaClientes" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Email</th>
+            <th>Estado de la cuenta</th>
+            <th>Rol del Usuario</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @profiles.each do |profi| %>
+            <tr id="cliente_<%= profi.id %>" >
+                <td><%= profi.name %></td>
+                <td><%= profi.direction %></td>
+                <td><%= profi.email %></td>
+                <td><%= t("activerecord.attributes.client.statusClients.#{clie.statusClient}") %></td>
+                <td><%= t("activerecord.attributes.profile.rolUsers.#{profi.rolUser}") %></td>
+                <td>
+                <%= link_to "editar", edit_profile_path(clie), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                <%= link_to "Borrar", profi, remote: true, method: :delete, data: { confirm: "¿Borrar cliente: #{profi.name}?"}, class: "btn btn-danger btn-xs" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<%= render 'modal_clientes' %>
