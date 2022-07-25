@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_13_084318) do
+ActiveRecord::Schema.define(version: 2022_07_24_184141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "nombre"
+    t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -38,6 +45,18 @@ ActiveRecord::Schema.define(version: 2022_07_13_084318) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "statusOrder"
+    t.string "date"
+    t.integer "quantity"
+    t.bigint "client_id"
+    t.bigint "dish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["dish_id"], name: "index_orders_on_dish_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -83,6 +102,14 @@ ActiveRecord::Schema.define(version: 2022_07_13_084318) do
     t.index ["client_id"], name: "index_sales_on_client_id"
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string "nombre"
+    t.string "direccion"
+    t.string "telefono"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,8 +123,33 @@ ActiveRecord::Schema.define(version: 2022_07_13_084318) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "warehouse_details", force: :cascade do |t|
+    t.integer "cantidad"
+    t.bigint "product_id"
+    t.bigint "warehouse_record_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_warehouse_details_on_product_id"
+    t.index ["warehouse_record_id"], name: "index_warehouse_details_on_warehouse_record_id"
+  end
+
+  create_table "warehouse_records", force: :cascade do |t|
+    t.integer "cantidad"
+    t.integer "user_id"
+    t.bigint "supplier_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_warehouse_records_on_product_id"
+    t.index ["supplier_id"], name: "index_warehouse_records_on_supplier_id"
+  end
+
   add_foreign_key "profiles", "users"
   add_foreign_key "sale_details", "products"
   add_foreign_key "sale_details", "sales"
   add_foreign_key "sales", "clients"
+  add_foreign_key "warehouse_details", "products"
+  add_foreign_key "warehouse_details", "warehouse_records"
+  add_foreign_key "warehouse_records", "products"
+  add_foreign_key "warehouse_records", "suppliers"
 end
