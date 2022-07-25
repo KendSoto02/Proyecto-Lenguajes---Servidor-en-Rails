@@ -6,8 +6,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :descripcion
       t.integer :existencia
       t.decimal :precio
-      t.references :categories, foreign_key: true
-      t.references :suppliers, foreign_key: true
 
       t.timestamps
     end

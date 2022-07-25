@@ -64,12 +64,10 @@ class DishesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_dish
       @dish = Dish.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def dish_params
       params.require(:dish).permit(:name, :description, :existence, :price, :picture)
     end

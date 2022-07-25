@@ -54,26 +54,6 @@
       </div>
     </div>
 
-    <div class="item form-group<%= @product.errors[:category].any? ? ' has-error has-feedback' : '' %>">
-      <%= f.label :categoria, "Categoría: " %>
-      <div class="input-group">
-      <%= collection_select(:product, :category_id, @categorias, :id, :nombre, {:prompt => 'Seleccione categoria'}, { class: "form-control" })%>
-        <%if @product.errors[:category].any? %>
-          <p class="bg-danger"><%= @product.errors[:category].to_s[/\w([^"]*)/] %></p>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="item form-group<%= @product.errors[:supplier].any? ? ' has-error has-feedback' : '' %>">
-      <%= f.label :supplier, "Proveedor: " %>
-      <div class="input-group">
-      <%= collection_select(:product, :supplier_id, @proveedores, :id, :nombre, {:prompt => 'Seleccione un proveedor'}, { class: "form-control" })%>
-        <%if @product.errors[:supplier].any? %>
-          <p class="bg-danger"><%= @product.errors[:supplier].to_s[/\w([^"]*)/] %></p>
-        <% end %>
-      </div>
-    </div>
-
     <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
       <%= f.submit @product.new_record? ? "Crear Producto" : "Actualizar Producto", :class => "btn btn-success"%>
     </div>  
