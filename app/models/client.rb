@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
-    has_many :sales
+    #has_many :sales
+    has_many :orders
 
     validates :name, presence: true
     def self.buscador(termino)

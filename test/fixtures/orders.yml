@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status_order: 1
+  date: MyString
+  quantity: 1
+
+two:
+  status_order: 1
+  date: MyString
+  quantity: 1

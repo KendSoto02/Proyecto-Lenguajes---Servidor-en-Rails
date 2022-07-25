@@ -41,7 +41,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails' 
 gem 'font_awesome5_rails'
-
+gem 'rack-cors'
 gem 'carrierwave', '~> 2.0'
 gem "fog-google"
 gem "google-api-client", "> 0.8.5", "< 0.9"

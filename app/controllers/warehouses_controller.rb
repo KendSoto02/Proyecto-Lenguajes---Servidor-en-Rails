@@ -47,6 +47,7 @@ class WarehousesController < ApplicationController
       producto:        @detalle_entrada.product.try(:nombre),
       cantidad:        @detalle_entrada.cantidad
     }
+    
 
     producto.existencia  = existencia_antes_entrada + cantidad
 

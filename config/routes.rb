@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :orders
+  scope module: :api, path: "api" do
+    resources :orders
+  end
   resources :dishes
   devise_for :users
   root to: 'home#index'
