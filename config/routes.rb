@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :dishes
   devise_for :users
   root to: 'home#index'
-  resources :clients, except: [:show]
+  resources :clients
 
   resources :products
   resources :sales

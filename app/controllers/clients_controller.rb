@@ -15,10 +15,10 @@ class ClientsController < ApplicationController
         respond_to do |format|
             if @cliente.save
                 format.json { head :no_content }
-                format.js
+                #format.js
               else
                 format.json { render json: @cliente.errors.full_messages, status: :unprocessable_entity }
-                format.js { render :new }
+                #format.js { render :new }
               end
         end
     end
