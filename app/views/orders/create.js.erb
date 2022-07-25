@@ -1,5 +1,0 @@
-$('#modalOrders').modal('toggle');
-$('#tablaOrders').append(
-    '<tr id="order_<%= @order.id %>" ><td><%= @order.date %></td><td><%= @order.client != nil ? @order.client.name : "No tiene cliente" %></td><td><%= @order.dish != nil ? @order.dish.name : "No tiene plato" %></td><td><%= @order.quantity %></td><td><%= @order.statusOrder %></td><td><%= link_to 'editar', edit_order_path(@order), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @order, remote: true, method: :delete, data: { confirm: "¿Borrar order de cliente: #{@order.client.name}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
-);
-    
